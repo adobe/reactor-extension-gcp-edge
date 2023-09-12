@@ -7,4 +7,3 @@ coverage
 jest.config.js
 adobe-reactor-extension-gcp-edge-*.tgz
 package-gcp-*.zip
-kinesis.js
