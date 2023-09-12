@@ -1,0 +1,79 @@
+{
+  "displayName": "Google Cloud Platform",
+  "name": "gcp",
+  "iconPath": "resources/icons/gcp.svg",
+  "version": "1.0.0",
+  "exchangeUrl": "https://exchange.adobe.com/apps/ec/109772",
+  "description": "Server side extension that allows users to send data to Google Cloud Platform.",
+  "author": {
+    "name": "Adobe",
+    "url": "http://adobe.com",
+    "email": "reactor@adobe.com"
+  },
+  "platform": "edge",
+  "viewBasePath": "dist/",
+  "configuration": {
+    "viewPath": "configuration/configuration.html",
+    "schema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "properties": {
+        "credentials": {
+          "type": "object",
+          "properties": {
+            "accessToken": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false,
+          "required": ["accessToken"]
+        }
+      },
+      "additionalProperties": false,
+      "required": ["credentials"]
+    }
+  },
+  "actions": [
+    {
+      "name": "send-data-to-cloud-pub-sub",
+      "displayName": "Send Data to Cloud Pub/Sub",
+      "libPath": "src/lib/actions/sendDataToCloudPubSub.js",
+      "viewPath": "actions/sendDataToCloudPubSub.html",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "topic": {
+            "type": "string",
+            "minLength": 1
+          },
+          "data": {
+            "oneOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "string",
+                "minLength": 1
+              }
+            ]
+          },
+          "attributes": {
+            "oneOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "string",
+                "minLength": 1
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": ["topic", "data"]
+      }
+    }
+  ]
+}
