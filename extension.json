@@ -11,6 +11,7 @@
     "email": "reactor@adobe.com"
   },
   "platform": "edge",
+  "releaseNotesUrl": "https://github.com/adobe/reactor-extension-gcp-edge/releases",
   "viewBasePath": "dist/",
   "configuration": {
     "viewPath": "configuration/configuration.html",
