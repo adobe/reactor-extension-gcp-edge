@@ -61,4 +61,42 @@ describe('Send Data to Cloud Pub/Sub module', () => {
       );
     });
   });
+
+  test('encodes Unicode characters in data without throwing', () => {
+    const fetch = jest.fn(() => Promise.resolve({}));
+
+    const extensionSettings = {
+      credentials: {
+        accessToken: 'ABC'
+      }
+    };
+
+    const settings = {
+      topic: 'projects/123/topics/ABC',
+      data: 'Georgie & Mandy’s First Marriage'
+    };
+
+    const utils = {
+      fetch: fetch,
+      getSettings: () => settings,
+      getExtensionSettings: () => extensionSettings
+    };
+
+    return sendEvent({ arc, utils }).then(() => {
+      expect(fetch).toHaveBeenCalledWith(
+        'https://pubsub.googleapis.com/v1/projects/123/topics/ABC:publish',
+        {
+          method: 'POST',
+          headers: {
+            Authorization: 'Bearer ABC',
+            'content-type': 'application/json'
+          },
+          body:
+            '{"messages":[{' +
+            '"data":"R2VvcmdpZSAmIE1hbmR54oCZcyBGaXJzdCBNYXJyaWFnZQ==",' +
+            '"attributes":{}}]}'
+        }
+      );
+    });
+  });
 });
