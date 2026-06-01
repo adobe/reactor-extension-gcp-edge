@@ -1,6 +1,6 @@
 {
   "name": "@adobe/reactor-extension-gcp-edge",
-  "version": "1.0.0",
+  "version": "1.1.0-beta.1",
   "description": "Adobe Experience Platform event forwarding extension to make calls to Google Cloud Platform.",
   "author": {
     "name": "Adobe",
