@@ -17,11 +17,11 @@ const isString = (value) =>
 
 const base64Encode = (value) => {
   value = isString(value) ? value : JSON.stringify(value);
-  if (btoa) {
-    return btoa(value);
-  }
-
-  return Buffer.from(value).toString('base64');
+  const bytes = new TextEncoder().encode(value);
+  const binaryStr = Array.from(bytes)
+    .map((b) => String.fromCharCode(b))
+    .join('');
+  return btoa(binaryStr);
 };
 
 const buildFetchObject = ({ data, attributes = {} }, accessToken) => {

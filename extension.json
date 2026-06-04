@@ -2,7 +2,7 @@
   "displayName": "Google Cloud Platform",
   "name": "gcp",
   "iconPath": "resources/icons/gcp.svg",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "exchangeUrl": "https://exchange.adobe.com/apps/ec/109772",
   "description": "Server side extension that allows users to send data to Google Cloud Platform.",
   "author": {
@@ -11,6 +11,7 @@
     "email": "reactor@adobe.com"
   },
   "platform": "edge",
+  "releaseNotesUrl": "https://github.com/adobe/reactor-extension-gcp-edge/releases",
   "viewBasePath": "dist/",
   "configuration": {
     "viewPath": "configuration/configuration.html",
